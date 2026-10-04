@@ -9,13 +9,10 @@ def normalize_skus(skus):
 
 
 def find_duplicates(skus):
-    seen = set()
-    dupes = set()
-    for s in skus:
-        if s in seen:
-            dupes.add(s)
-        else:
-            seen.add(s)
+    dupes = []
+    for i, s in enumerate(skus):
+        if s in skus[:i] and s not in dupes:
+            dupes.append(s)
     return dupes
 
 
